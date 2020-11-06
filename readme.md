@@ -17,15 +17,25 @@ Building a basic CRUD app should be mostly muscle memory.
 
 **How to perform this activity:**
 
-In class, we will work through parts 1-2 in the back-end workshop, and parts 3-4 in the front-end workshop.
+In class, we will work through all parts (as much as we can)
 
 **_NOTE_**: The code written in class has many different styles (ES5 functions, ES6 functions, async callbacks, promises, etc) to show a variety of ways to handle the same functionality.
 
 Once we have finished, you should delete everything and start over for yourself!
 
-On the second rebuild: Do not reference code you already wrote for this assignment! Instead, rely on DOCUMENTATION and your CHEATSHEET. If you have completed part 4 in a timely manner, proceed to part 5.
+On the second rebuild: Do not reference code you already wrote for this assignment! Instead, rely on DOCUMENTATION and your CHEATSHEET.
 
-## Part 1: Server API
+## Part 1: ReactJS (Fetching Directly)
+
+In your frontend folder:
+
+**Using the [NASA Astronomy Picture of the Day API](https://api.nasa.gov/):**
+
+- Refactor the given React code to do the following:
+  - On page load, fetch the Astronomy Picture of the Day from NASA API and render to the page
+  - Include the date, explanation, title, and image
+
+## Part 2: Server API
 
 Objectives _(read this carefully)_:
 
@@ -43,10 +53,19 @@ _ROUTES (PART 1)_
 
 | METHOD | PATH               | DESCRIPTION                             |
 | ------ | ------------------ | --------------------------------------- |
-| GET    | /api/donuts     | respond with string "all the donuts" |
-| GET    | /api/donuts/:id | respond with string "single donut"   |
+| GET    | /api/picture     | respond with string "the picture" |
 
-## Part 2: MySQL Queries
+Technologies:
+- MySQL
+- MySQLJS
+- Postman
+
+_ROUTES (PART 2)_
+| METHOD | PATH               | DESCRIPTION                             |
+| ------ | ------------------ | --------------------------------------- |
+| GET    | /api/picture     | respond with the Astronomy Picture of the Day Information |
+
+## Part 3: MySQL Queries
 
 - Connect your server to your database using MySQLJS (mysql javascript)
 - Complete the server routes outlined in the route table below (use the queries.js helper functions)
@@ -61,28 +80,19 @@ _ROUTES:_
 
 | METHOD | PATH               | DESCRIPTION                                          |
 | ------ | ------------------ | ---------------------------------------------------- |
-| GET    | /api/donuts     | respond with all the donuts from the database     |
-| GET    | /api/donuts/:id | respond with single donut, based on req.params.id |
+| GET    | /api/picture     | respond with the Astronomy Picture of the Day from the database     |
 
-## Part 3: ReactJS (Using Dummy Data)
-
-In your frontend folder:
-
-**Using the given donuts dummy data (exampleDonuts.js):**
-
-- Refactor the given React code to do the following:
-  - Dynamically view all the donuts (using the provided React components during rep 1 and creating your own during rep 2)
-  - Enter a donut id to the form and view that selected donut
+-- If the picture does not exist in the database, add it
+* Note, this is slightly awkward logic, but that's okay for now!
 
 ## Part 4: ReactJS (Refactor using Data From Your Server API)
 
 In your frontend folder:
 
-**Using the donut data from your server API routes:**
+**Using the Astronomy Picture of the Day data from your server API routes:**
 
 - Update your React app to:
-  - View all donuts from the server
-  - View a specific donut from the server
+  - View the Astronomy Picture of the Day from the server (not directly accessing the NASA API)
 
 **HINT: You will need to use AJAX (Fetch, Axios, etc) to allow your client side code to talk to your server.**
 
@@ -90,19 +100,4 @@ You've already created the endpoints below, now you need to use AJAX to communic
 
 | METHOD | PATH               | DESCRIPTION                                          |
 | ------ | ------------------ | ---------------------------------------------------- |
-| GET    | /api/donuts     | respond with all the donuts                       |
-| GET    | /api/donuts/:id | respond with single donut, based on req.params.id |
-
-## Part 5: Bonus - Full CRUD
-
-**(DO THIS ONLY ON THE SECOND RUN)**
-
-Handle these additional routes in your server, they should modify the database accordingly:
-
-| METHOD | PATH               | DESCRIPTION                                |
-| ------ | ------------------ | ------------------------------------------ |
-| POST   | /api/donuts     | inserts new donut record from req.body |
-| PATCH  | /api/donuts/:id | update a donut record from req.body    |
-| DELETE | /api/donuts/:id | delete a donut record                  |
-
-Create the appropriate interface in your React app so that users can make AJAX (e.g. Axios, Fetch, \$.Ajax, etc) requests to the routes above and then see the changes render in their web browser.
+| GET    | /api/picture     | respond with the Astronomy Picture of the day                       |
