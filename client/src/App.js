@@ -7,7 +7,7 @@ export default class App extends Component {
     super();
 
     this.state = {
-      message: "Hello HR-ATX54"
+      message: "Hello HR-ATX59"
     };
   }
 
